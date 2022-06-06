@@ -48,7 +48,7 @@ class MaxFlow {
 	{
 		int u, v;
 
-	
+		//creating a residual graph
 		int rGraph[][] = new int[V][V];
 
 		for (u = 0; u < V; u++)
@@ -60,17 +60,18 @@ class MaxFlow {
 
 		int max_flow = 0; 
 
-		
+		//while there is augmenting path
 		while (bfs(rGraph, s, t, parent)) {
 			
 			int path_flow = Integer.MAX_VALUE;
+			//find the minimum flow of a particular path
 			for (v = t; v != s; v = parent[v]) {
 				u = parent[v];
 				path_flow
 					= Math.min(path_flow, rGraph[u][v]);
 			}
 
-			
+			//update the residual graph
 			for (v = t; v != s; v = parent[v]) {
 				u = parent[v];
 				rGraph[u][v] -= path_flow;

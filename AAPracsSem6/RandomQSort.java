@@ -8,7 +8,7 @@ class RandomQSort
      
         Random rand= new Random();
         int pivot = rand.nextInt(high-low)+low;
-         
+         //swap pivot with array end
         int temp1=arr[pivot]; 
         arr[pivot]=arr[high];
         arr[high]=temp1;
@@ -20,19 +20,20 @@ class RandomQSort
         random(arr,low,high);
         int pivot = arr[high];
      
- 
+        
         int i = (low-1); 
         for (int j = low; j < high; j++)
         {
             if (arr[j] < pivot)
             {
+                //swap i and j
                 i++;
                 int temp = arr[i];
                 arr[i] = arr[j];
                 arr[j] = temp;
             }
         }
- 
+        //swap pivot with partition index
         int temp = arr[i+1];
         arr[i+1] = arr[high];
         arr[high] = temp;
